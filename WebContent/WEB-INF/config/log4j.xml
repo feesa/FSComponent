@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="Console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy/MM/dd-HH:mm:ss} >> %5p >> %t >> %l >> %m%n" />
+		</layout>
+	</appender>
+	<appender class="org.apache.log4j.RollingFileAppender" name="R">
+        <param value="${WORKDIR}logs/FSComponentLog.log" name="File"/>
+        <param value="true" name="Append"/>
+        <param value="10" name="MaxBackupIndex"/>
+        <param value="4096KB" name="MaxFileSize"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param value="[%d] %p %c - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+	<root>
+		<priority value="info" />
+		<appender-ref ref="Console" />
+		<appender-ref ref="R"/>
+	</root>
+</log4j:configuration>
